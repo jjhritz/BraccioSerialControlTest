@@ -31,12 +31,12 @@ Servo gripper;        // M5
 int16_t arm_position[] = {90, 45, 180, 180, 90, 10};
 
 // Positional constraints on the servos, in degrees, in the form M0[min, max], M1[min,max], etc.
-const int16_t arm_constraints[6][2] = { {0, 180},   // M0 Base
-                                        {15, 165},  // M1 Shoulder
-                                        {0, 180},   // M2 Elbow
-                                        {0, 180},   // M3 Wrist elevation
-                                        {0, 180},   // M4 Wrist rotation
-                                        {10, 73},   // M5 Grabber (Open, Close)
+const int16_t arm_constraints[6][2] = { {1, 179},   // M0 Base                  default: {0, 180}
+                                        {17, 163},  // M1 Shoulder              default: {15, 165}
+                                        {1, 179},   // M2 Elbow                 default: {0, 180}
+                                        {1, 179},   // M3 Wrist elevation       default: {0, 180}
+                                        {1, 179},   // M4 Wrist rotation        default: {0, 180}
+                                        {11, 72},   // M5 Grabber (Open, Close) default: {10, 73}
 };
 
 // Checks and rectifies servo constraint violations.  

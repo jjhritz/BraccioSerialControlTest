@@ -4,30 +4,30 @@
 int16_t check_constraints(int8_t motor, int16_t pos)
 {
     int16_t return_pos = pos;
-    Serial.print("Validating position ");  Serial.print(pos);  Serial.print(" on motor ");  Serial.print(motor); 
-    Serial.print("\t");
+    // Serial.print("Validating position ");  Serial.print(pos);  Serial.print(" on motor ");  Serial.print(motor);
+    // Serial.print("\t");
     
     // if the new position is less than the minimum constraint, return the minimum constraint
     if(pos < arm_constraints[motor][MINCONSTRAINT])
     {
         return_pos = arm_constraints[motor][MINCONSTRAINT];
-        Serial.print("WARNING: exceeds MINIMUM constraint of: "); Serial.print(arm_constraints[motor][MINCONSTRAINT]);
-        Serial.print("\t");
+        // Serial.print("WARNING: exceeds MINIMUM constraint of: "); Serial.print(arm_constraints[motor][MINCONSTRAINT]);
+        // Serial.print("\t");
     }
     // else, if the new position is greater than the maximum constraint, return the maximum constraint
     else if(pos > arm_constraints[motor][MAXCONSTRAINT])
     {
         return_pos = arm_constraints[motor][MAXCONSTRAINT];
-        Serial.print("WARNING: exceeds MAXIMUM constraint of: "); Serial.print(arm_constraints[motor][MAXCONSTRAINT]);
-        Serial.print("\t");
+        // Serial.print("WARNING: exceeds MAXIMUM constraint of: "); Serial.print(arm_constraints[motor][MAXCONSTRAINT]);
+        // Serial.print("\t");
     }
     else
     {
-      Serial.print("Within constraints.\t");
+      // Serial.print("Within constraints.\t");
     }
 
-    Serial.print("Returning position: "); Serial.println(return_pos);
-    Serial.println();
+    // Serial.print("Returning position: "); Serial.println(return_pos);
+    // Serial.println();
     return return_pos;
 }
 

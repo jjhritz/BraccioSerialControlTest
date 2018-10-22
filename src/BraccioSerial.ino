@@ -9,7 +9,7 @@ void parse_braccio_serial_command()
   strtokIndx = strtok(NULL, ",");             // continue where the previous call left off to get the inc/abs command
   cmd_inc_abs = (int8_t) atoi(strtokIndx);    // convert to integer, then cast as 8-bit signed integer
 
-  strtokIndx = strtok(NULL, ",");             // continue where the previous call left off to get the distance parametert
+  strtokIndx = strtok(NULL, ",");             // continue where the previous call left off to get the distance parameter
   cmd_pos = (int16_t) atoi(strtokIndx);       // convert to integer, then cast as 16-bit signed integer
 }
 

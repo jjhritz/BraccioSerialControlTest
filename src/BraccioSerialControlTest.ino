@@ -3,12 +3,13 @@
 #include "BraccioSerial.h"
 
 
-const int8_t numChars = 8;              // Maximum size of a command message; start- and end-of-message characters are not stored.
+const int8_t numChars = 10;              // Maximum size of a command message; start- and end-of-message characters are not stored.
 char commandMessage[numChars];          // stores the received command for external access
 
 long finish_command_timestamp = 0;
 long current_timestamp;
 
+/*
 void test_move_arm_to()
 {
     delay(2000);
@@ -55,7 +56,9 @@ void test_move_arm_to()
     move_arm_to(90, 90, 90, 90, 90, 73);
     print_arm_pos();
 }
+ */
 
+/*
 void test_move_arm_by()
 {
     delay(2000);
@@ -116,6 +119,7 @@ void test_move_arm_by()
     print_arm_pos();
     
 }
+ */
 
 void reset_ending_timestamp()
 {
@@ -162,8 +166,9 @@ void setup()
 
 void loop()
 {
-    current_timestamp = millis();
+    // current_timestamp = millis();
 
+    /*
     if(current_timestamp > finish_command_timestamp)
     {
         move_arm_to(arm_position[BASE_SERVO],
@@ -173,6 +178,7 @@ void loop()
                     arm_position[ROTATION_SERVO], 
                     arm_position[GRIPPER_SERVO]);
     }
+     */
     
     allocateStrings(numChars, commandMessage);       // allocates space for received message arrays
     recvWithStartEndMarkers(numChars, '<', '>');     // receives message
@@ -183,13 +189,17 @@ void loop()
 
         parse_braccio_serial_command();
         // print_parsed_braccio_command();
+        // Serial.println(Serial.available());
       
         newData = false;                    // Tell the system we have parsed the data and are ready for a new command.
       
         pass_parsed_command(cmd_sel_motor,  // move the arm
                           cmd_inc_abs, 
                           cmd_pos);
-        reset_ending_timestamp();            
+        // reset_ending_timestamp();
+
+        // free(receivedChars);
+        // free(tempChars);
     }
 
     // test_move_arm_to();
